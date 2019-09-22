@@ -5,17 +5,11 @@ const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
 const app = express()
-const port = 2020;
 
 
-const admin = require('./modules/respository/admin')
-
-/**
 const publicRouter = require('./routes/public/routes')
 const investorsRouter = require('./routes/investors/routes')
 const adminRouter = require('./routes/admin/routes')
-
-
 const generalErrorHandlers = require('./error_handlers/main')
 
 
@@ -41,9 +35,9 @@ app.use('/api/v1/admin', adminRouter)
 //ERROR HANDLING
 app.use(generalErrorHandlers)
 
- */
+
 
 //BOOTUP
 app.listen(port, () => {
-     console.log("application is running on port ", +port);
+    console.log("application is running on port ", +port);
 })
