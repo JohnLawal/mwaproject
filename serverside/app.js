@@ -3,7 +3,13 @@ const express = require('express')
 const morgan = require('morgan')
 const fs = require('fs')
 const path = require('path')
+const app = express()
+const port = 2020;
 
+
+const admin = require('./modules/respository/admin')
+
+/**
 const publicRouter = require('./routes/public/routes')
 const investorsRouter = require('./routes/investors/routes')
 const adminRouter = require('./routes/admin/routes')
@@ -14,7 +20,7 @@ const generalErrorHandlers = require('./error_handlers/main')
 
 //INIT
 const port = 2020;
-const app = express()
+
 
 //CONFIG
 app.disable('x-powered-by')
@@ -34,5 +40,9 @@ app.use('/api/v1/admin', adminRouter)
 //ERROR HANDLING
 app.use(generalErrorHandlers)
 
+ */
+
 //BOOTUP
-app.listen(port, () => console.log('Listening on port: ' + port))
+app.listen(port, () => {
+     console.log("application is running on port ", +port);
+})
