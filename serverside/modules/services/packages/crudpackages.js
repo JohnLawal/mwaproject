@@ -14,7 +14,14 @@ handlers.viewOnePackageHandler = function(req, res, next) {
     let packageId = req.params.id;
     PackageSchema.findById(packageId, (err, document) => {
         if (err) return next(Error(err));
-        res.status(200).json(document)
+        if (document) {
+            res.status(200).json(document)
+        } else {
+            res.status(404).json({
+                status: '404',
+                data: 'Package not found'
+            })
+        }
     })
 }
 
