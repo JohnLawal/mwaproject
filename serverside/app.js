@@ -1,6 +1,7 @@
 //GENERAL DEPENDENCIES
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
 
