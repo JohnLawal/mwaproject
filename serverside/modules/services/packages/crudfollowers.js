@@ -1,5 +1,5 @@
-let addFollowerToPackage
-let removeFollowerFromPackage
+let addFollowerToPackage = function() {}
+let removeFollowerFromPackage = function() {}
 
 
 module.exports = {

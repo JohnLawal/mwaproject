@@ -1,5 +1,5 @@
-let addInvestmentToPackage
-let updateInvestmentInPackage
+let addInvestmentToPackage = function() {}
+let updateInvestmentInPackage = function() {}
 
 module.exports = {
     addInvestmentToPackage: addInvestmentToPackage,

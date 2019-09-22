@@ -18,11 +18,10 @@ let viewOnePackageHandler = function(req, res, next) {
 
 let createPackageHandler = function(req, res, next) {
     let newPackage = req.body;
-    packageSchema.
 }
 
-let updatePackageHandler
-let deletePackageHandler
+let updatePackageHandler = function() {}
+let deletePackageHandler = function() {}
 
 
 module.exports = {
