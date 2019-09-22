@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const client = new mongoClient("mongodb+srv://yvan:yvan@cluster0-vkamr.mongodb.net/farminvest?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true});
-
+mongoose.connect("mongodb+srv://yvan:yvan@cluster0-vkamr.mongodb.net/farminvest?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true});
 const packageSchema = new mongoose.Schema({
 name : { type :String, required: true},
 amount :  {type : Number},
