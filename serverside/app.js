@@ -3,7 +3,12 @@ const express = require('express')
 const morgan = require('morgan')
 const fs = require('fs')
 const path = require('path')
-const customRouter = require('./routes/router')
+
+const publicRouter = require('./routes/public/routes')
+const investorsRouter = require('./routes/investors/routes')
+const adminRouter = require('./routes/admin/routes')
+
+
 const generalErrorHandlers = require('./error_handlers/main')
 
 
@@ -21,7 +26,10 @@ let accessLogStream = fs.createWriteStream(path.join(__dirname, 'requestslog.log
 
 app.use(morgan('combined', { stream: accessLogStream }))
 app.use(express.json())
-app.use('/api/v1', myRouter)
+
+app.use('/api/v1/public', publicRouter)
+app.use('/api/v1/invest', investorsRouter)
+app.use('/api/v1/admin', adminRouter)
 
 //ERROR HANDLING
 app.use(generalErrorHandlers)
