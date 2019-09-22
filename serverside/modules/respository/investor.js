@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const client = new mongoClient("mongodb+srv://yvan:yvan@cluster0-vkamr.mongodb.net/farminvest?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true});
-
 const investorSchema = new mongoose.Schema({
 firstName : { type :String, required: true},
 lastName : { type :String, required: true},
