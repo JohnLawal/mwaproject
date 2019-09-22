@@ -9,12 +9,11 @@ username : { type :String, required: true, unique :true},
 email : { type :String, required: true, unique :true},
 password : { type :String, required: true},
 accountNumber : { type :String, unique :true},
-bankName : String,
 phoneNumber : { type :String, unique :true},
+bankName : String,
 followedPackages : [{id : String}],
 investedPackages : [{id : String}],
 dateRegisterd : Date
-
 });
 
 mongoose.connection.once('open',()=>{
@@ -22,3 +21,10 @@ mongoose.connection.once('open',()=>{
 })
 
 module.exports = mongoose.model('Investor',investorSchema);
+
+// Custom functions
+
+investorSchema.statics.findByUsername = function(_username, callback){
+    this.find({username: _username}, callback)
+}
+
