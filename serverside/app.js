@@ -27,8 +27,10 @@ let accessLogStream = fs.createWriteStream(path.join(__dirname, 'requestslog.log
 
 app.use(morgan('combined', { stream: accessLogStream }))
 app.use(express.json())
+app.use(express.urlencoded())
 
-app.use('/api/v1/investor', investorsRouter)
+//app.use('/api/v1/public', publicRouter)
+app.use('/api/v1/invest', investorsRouter)
 app.use('/api/v1/admin', adminRouter)
 app.use('/api/v1/packages', packagesRouter)
 
