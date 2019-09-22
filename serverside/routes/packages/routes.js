@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 
-router.post('/signup', signUpHandler);
+router.post('/investor', signUpHandler);
 router.post('/signin', signInHandler);
 router.post('/forgotpassword', forgotPasswordHandler);
 router.post('/updatepassword', updatePasswordHandler);
