@@ -1,15 +1,43 @@
-<div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Input">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-select placeholder="Select">
-       <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+<mat-card>
+  <mat-card-title>Sign Up</mat-card-title>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="first name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput placeholder="last name" />
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="username" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" type="password" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input formControlName="passConfirm" type="password" matInput />
+      </mat-form-field>
+    </p>
+    <p>
+      <button type="submit"  [disabled]="!form.valid" mat-stroked-button color="primary">Primary</button>
+    </p>
+  </form>
+</mat-card>
