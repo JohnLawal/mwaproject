@@ -3,10 +3,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
-  imports: [BrowserAnimationsModule, MatButtonModule, MatCheckboxModule, MatInputModule],
-  exports: [BrowserAnimationsModule, MatButtonModule, MatCheckboxModule, MatInputModule],
+  imports: [BrowserAnimationsModule,
+            MatButtonModule,
+            MatCheckboxModule,
+            MatInputModule,
+            MatCardModule],
+  exports: [BrowserAnimationsModule,
+            MatButtonModule,
+            MatCheckboxModule,
+            MatInputModule,
+            MatCardModule],
 })
 export class AngularMaterialModule { }
