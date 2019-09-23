@@ -1,42 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
-import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import {AngularMaterialModule} from './angular-material/angular-material.module';
-import {ReactiveFormsModule} from "@angular/forms";
-
+import {Routes, RouterModule } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'aboutus', redirectTo: 'about'},
-  {path: 'forgotpassword', component: ForgotpasswordComponent},
-  {path: 'resetpassword', component: ResetpasswordComponent},
-  
+  {path: '', loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)}
 ];
+
+import {AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SignupComponent,
-    SigninComponent,
-    ForgotpasswordComponent,
-    ResetpasswordComponent,
-    AboutComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    AngularMaterialModule,
-    ReactiveFormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
