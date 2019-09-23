@@ -1,6 +1,5 @@
-const Investor = require('../respository/investor');
+const Investor = require('../../respository/investor');
 const bcrypt = require('bcrypt');
-const {promisify} = require('util');
 
 const service = module.exports;
 
@@ -25,8 +24,7 @@ service.getAllInvestors = async function (req, res, next){
         res.json({complete: true, data: list});
     }catch(err) {
         res.json({complete:false, data: err});
-    }
-    
+    }   
 }
 
 /*  Required:
