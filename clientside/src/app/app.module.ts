@@ -6,9 +6,9 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import {AngularMaterialModule} from './angular-material/angular-material.module';
 
 
 const routes: Routes = [
@@ -32,7 +32,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    AngularMaterialModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
