@@ -9,7 +9,10 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import {AngularMaterialModule} from './angular-material/angular-material.module';
+<<<<<<< HEAD
 import {ReactiveFormsModule} from "@angular/forms";
+=======
+>>>>>>> 0e179aecd4b668b249b09a620f5314e11f0f8d9b
 
 
 
