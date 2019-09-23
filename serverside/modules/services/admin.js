@@ -28,6 +28,7 @@ let saveAdmin = function(request,response,next){
           response.status(200).json({ message: "successfully", key: token });
         
     } catch (error) {
+      //  next(new Error(error))
         response.status(400).json({status : 400, message : 'Error occured, '+error});
     }
  
