@@ -8,12 +8,15 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'aboutus', redirectTo: 'about'},
   {path: 'forgotpassword', component: ForgotpasswordComponent},
   {path: 'resetpassword', component: ResetpasswordComponent},
 ];
@@ -24,7 +27,8 @@ const routes: Routes = [
     SignupComponent,
     SigninComponent,
     ForgotpasswordComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
