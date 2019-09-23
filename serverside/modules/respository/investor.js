@@ -5,20 +5,33 @@ mongoose.connect("mongodb+srv://yvan:yvan@cluster0-vkamr.mongodb.net/farminvest?
 const investorSchema = new mongoose.Schema({
 firstName : { type :String, required: true},
 lastName : { type :String, required: true},
-username : { type :String, required: true, unique :true},
+username : { type :String, required: true, unique :true, index:true},
 email : { type :String, required: true, unique :true},
 password : { type :String, required: true},
 accountNumber : { type :String, unique :true},
-bankName : String,
 phoneNumber : { type :String, unique :true},
+bankName : String,
 followedPackages : [{id : String}],
 investedPackages : [{id : String}],
 dateRegisterd : Date
-
 });
+
+// Custom Methods
+investorSchema.statics.findByUsername = function(_username, callback){
+    return this.find({username: _username}, callback);
+}
+
+investorSchema.methods.findInvestments = function(_username, callback){
+    return this.investedPackages;
+}
+
+investorSchema.methods.findFollowed = function(_username, callback) {
+    return this.followedPackages;
+}
 
 mongoose.connection.once('open',()=>{
     console.log('connection started successfully');
 })
 
 module.exports = mongoose.model('Investor',investorSchema);
+
