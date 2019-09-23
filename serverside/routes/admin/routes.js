@@ -5,11 +5,9 @@ const {checkToken} = require('../../middlewares/checktoken');
 const adminRouter = express.Router();
 
 
-adminRouter.post('/save',saveMiddleware,saveAdmin);
+adminRouter.post('/save',checkToken,saveMiddleware,saveAdmin);
 adminRouter.get('/:username',checkToken,getAdminInfo);
 adminRouter.put('/changePass',checkToken,changePassword);
 adminRouter.post('/login',login);
-
-
 
 module.exports = adminRouter;

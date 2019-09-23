@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const jwtKey = 'yvanKey';
+const jwtKey = 'farminvest-key';
 const jwtExpirationTime = 6400000;
 
 let generateToken = function (userInfo){

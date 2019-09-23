@@ -9,6 +9,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import {AngularMaterialModule} from './angular-material/angular-material.module';
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 
 const routes: Routes = [
@@ -19,6 +21,7 @@ const routes: Routes = [
   {path: 'aboutus', redirectTo: 'about'},
   {path: 'forgotpassword', component: ForgotpasswordComponent},
   {path: 'resetpassword', component: ResetpasswordComponent},
+  
 ];
 
 @NgModule({
@@ -33,6 +36,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
