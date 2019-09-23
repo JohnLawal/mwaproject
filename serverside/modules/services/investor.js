@@ -1,53 +1,91 @@
 const Investor = require('../respository/investor');
+const bcrypt = require('bcrypt');
+const {promisify} = require('util');
 
 const service = module.exports;
 
-
 /*  Required:
-        body: {validInvestorJSON}
+        params: [username]
 */
-service.saveInvestor = function (req, res, next){
-    // TODO: validate req.body?
-    console.log("....trying to save..");
-    console.log(req.body);
-    res.end();
-}
-
-
-/*  Required:
-        params: [id]
-*/
-service.getInvestorByUsername = function (req, res, next){
-    let username = req.params.username;
-    Investor.findByUsername(username, function(err, user){
-        if (err) {
-            // ERROR Handler
-        }
+service.getInvestorByUsername = async function (req, res){
+    try {
+        let username = req.params.username;
+        let user = await Investor.findByUsername(username);
         res.json({complete: true, data: user});
-    });
-    next();
+    } catch (err) {
+        res.json({complete: false, data: err});
+    }
 }
 
 /*  Required: NONE
 */
-service.getAllInvestors = function (req, res, next){
-    Investor.find(function(err, list){
+service.getAllInvestors = async function (req, res, next){
+    try{
+        let list = await Investor.find()
         res.json({complete: true, data: list});
-    })
-    next();
+    }catch(err) {
+        res.json({complete:false, data: err});
+    }
+    
 }
 
 /*  Required:
-        params: [id]
+        body: {validInvestorJSON}
+*/
+service.saveInvestor = async function (req, res, next){
+    // TODO: validate req.body?
+    try {
+        let investorInfo = req.body;
+        let hashedPass = await bcrypt.hash(investorInfo.password, 10);
+        investorInfo.password = hashedPass;
+        console.log(investorInfo);
+        let newInvestor = new Investor(investorInfo);
+        let savedData = await newInvestor.save();
+        res.json({complete:true, data: savedData});
+    } catch (err) {
+        console.log(err);
+        res.json({complete:false, data: err});
+    }
+    
+}
+
+/*  Required:
+        params: [username]
         body : {validInvestorJSON}
 */
-service.updateInvestor = function (req, res, next) {
+service.updateInvestor = async function (req, res, next) {
     // TODO
+    try{
+        let username = req.params.username;
+        let userData = req.body;
+        if(userData.password) {
+            console.log("new Password detected")
+            let hashedPassword = await bcrypt.hash(userData.password,10);
+            userData.password = hashedPassword; 
+        }
+        console.log("new data === " + JSON.stringify(userData));
+        await Investor.update({'username' : username},userData);
+        res.json({complete:true, data: null});
+    } catch (err) {
+        res.json({complete:false, data: null});
+    }
+    
 }
 
 /*  Required:
-        params: [id]
+        params: [username]
 */
-service.deleteInvestor = function (req, res, next) {
+service.deleteInvestor = async function (req, res, next) {
     // TODO
+    console.log("...delete");
+    try {
+        let username = req.params.username;
+        let removed = await Investor.remove({'username':username});
+        console.log("..removed " + removed);
+        res.json({complete:true, data:removed});
+
+    } catch (err) {
+        console.log("oh no.. error");
+        res.json({complete:false, data: err});
+    }
 }
