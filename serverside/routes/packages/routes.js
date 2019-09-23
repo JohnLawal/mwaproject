@@ -3,12 +3,12 @@ const router = express.Router();
 
 const { viewPackagesHandler, viewOnePackageHandler, createPackageHandler, updatePackageHandler, deletePackageHandler } = require('../../modules/services/packages/crudpackages')
 
-const { addFollowerToPackage, removeFollowerFromPackage } = require('../../modules/services/packages/crudfollowers');
+const { addFollowerToPackageHandler, removeFollowerFromPackageHandler } = require('../../modules/services/packages/crudfollowers');
 
-const { addInvestmentToPackage, updateInvestmentInPackage } = require('../../modules/services/packages/crudinvestments')
+const { addInvestmentToPackageHandler, updateInvestmentStatusInPackageHandler } = require('../../modules/services/packages/crudinvestments')
 
 //VIEW PACKAGES
-router.get('', viewPackagesHandler);
+router.get('/', viewPackagesHandler);
 
 //VIEW DETAILS FOR A PACKAGE
 router.get('/:id', viewOnePackageHandler);
@@ -23,16 +23,16 @@ router.put('/:id', updatePackageHandler)
 router.delete('/:id', deletePackageHandler)
 
 //ADD FOLLOWER TO PACKAGE
-router.post('/followers', addFollowerToPackage)
+router.post('/:id/followers', addFollowerToPackageHandler)
 
 //REMOVE FOLLOWER FROM PACKAGE
-router.delete('/followers/:id', removeFollowerFromPackage)
+router.delete('/:id/followers/:username', removeFollowerFromPackageHandler)
 
 //ADD INVESTMENT TO PACKAGE
-router.post('/investments', addInvestmentToPackage)
+router.post('/:id/investments', addInvestmentToPackageHandler)
 
-//UPDATE INVESTMENT IN PACKAGE
-router.put('/investments/:id', updateInvestmentInPackage)
+//UPDATE INVESTMENT STATUS IN PACKAGE
+router.put('/:id/investments/:investmentid', updateInvestmentStatusInPackageHandler)
 
 
 module.exports = router;

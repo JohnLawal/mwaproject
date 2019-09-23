@@ -19,7 +19,7 @@ const packageSchema = new mongoose.Schema({
         amount: Number,
         payment: {
             transactionRef: String,
-            type: String
+            transactionType: String
         },
         dateOfInvestment: Date,
         maturityDate: Date
