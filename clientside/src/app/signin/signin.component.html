@@ -1,1 +1,19 @@
-<p>signin works!</p>
+<div>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label >Username</mat-label>
+      <input matInput [value]="username" (input)="username=$event.target.value">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput [value]="password" (input)="password=$event.target.value" type="password">
+    </mat-form-field>
+  </p>
+
+  <div class="centered">
+    <button mat-raised-button color="primary" class="centered" (click)="login()">Login</button>
+  </div>      
+</div>
