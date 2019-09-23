@@ -38,23 +38,25 @@ handlers.createPackageHandler = function(req, res, next) {
 
 handlers.updatePackageHandler = function(req, res, next) {
     let packageId = req.params.id;
-    let docsModified = PackageSchema.updateOne({ _id: packageId }, req.body)
-    if (docsModified > 0) {
-        res.status(202).json({
-            status: 'Success',
-            data: 'Package has been updated'
-        })
-    } else {
-        res.status(409).json({
-            status: 'Failure',
-            data: 'No package was updated'
-        })
-    }
+    PackageSchema.updateOne({ _id: packageId }, req.body, function(err, update) {
+        if (update.nModified > 0) {
+            res.status(202).json({
+                status: 'Success',
+                data: 'Package has been updated'
+            })
+        } else {
+            res.status(409).json({
+                status: 'Failure',
+                data: 'No package was updated'
+            })
+        }
+    });
+
 }
 
 handlers.deletePackageHandler = function(req, res, next) {
     let packageId = req.params.id;
-    Tank.deleteOne({ _id: packageId }, function(err) {
+    PackageSchema.deleteOne({ _id: packageId }, function(err) {
         if (err) return next(Error(err));
         res.status(202).json({
             status: 'Success',
