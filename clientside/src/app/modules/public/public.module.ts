@@ -9,7 +9,7 @@ import { SigninComponent } from './signin/signin.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { AboutComponent } from './about/about.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -36,6 +36,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AngularMaterialModule,
     RouterModule.forChild(routes)
