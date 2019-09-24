@@ -9,6 +9,7 @@ import { SigninComponent } from './signin/signin.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { AboutComponent } from './about/about.component';
+import { AuthService } from './service/authentication.service';
 
 
 
@@ -40,6 +41,7 @@ const routes: Routes = [
     AngularMaterialModule,
     RouterModule.forChild(routes)
   ],
+  providers:[AuthService],
   bootstrap: [LandingpageComponent]
 })
 export class PublicModule { }
