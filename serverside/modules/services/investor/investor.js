@@ -6,13 +6,13 @@ const service = module.exports;
 /*  Required:
         params: [username]
 */
-service.getInvestorByUsername = async function (req, res){
+service.getInvestorByUsername = async function (req, res, next){
     try {
         let username = req.params.username;
         let user = await Investor.findByUsername(username);
         res.json({complete: true, data: user});
     } catch (err) {
-        res.json({complete: false, data: err});
+        next(err);
     }
 }
 
@@ -23,7 +23,7 @@ service.getAllInvestors = async function (req, res, next){
         let list = await Investor.find()
         res.json({complete: true, data: list});
     }catch(err) {
-        res.json({complete:false, data: err});
+        next(err);
     }   
 }
 
@@ -41,8 +41,7 @@ service.saveInvestor = async function (req, res, next){
         let savedData = await newInvestor.save();
         res.json({complete:true, data: savedData});
     } catch (err) {
-        console.log(err);
-        res.json({complete:false, data: err});
+        next(err);
     }
     
 }
@@ -65,7 +64,7 @@ service.updateInvestor = async function (req, res, next) {
         await Investor.update({'username' : username},userData);
         res.json({complete:true, data: null});
     } catch (err) {
-        res.json({complete:false, data: null});
+        next(err);
     }
     
 }
@@ -83,7 +82,6 @@ service.deleteInvestor = async function (req, res, next) {
         res.json({complete:true, data:removed});
 
     } catch (err) {
-        console.log("oh no.. error");
-        res.json({complete:false, data: err});
+        next(err);
     }
 }
