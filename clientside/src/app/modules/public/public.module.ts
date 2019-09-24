@@ -11,6 +11,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { AboutComponent } from './about/about.component';
 
 
+
+
 const routes: Routes = [
   {path: '', redirectTo: 'public'},
   {path: 'public', component: LandingpageComponent,
