@@ -6,6 +6,7 @@ import {Router, CanActivate, CanActivateChild,
 export class AdminGuardGuard implements CanActivate, CanActivateChild {
   constructor(private router: Router) { }
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.log(localStorage);
     if (localStorage.getItem('access_token')) {
       return true;
     }
