@@ -7,5 +7,6 @@ router.get('/:username',investorService.getInvestorByUsername);
 router.post('',investorService.saveInvestor);
 router.patch('/:username',investorService.updateInvestor);
 router.delete('/:username', investorService.deleteInvestor);
+router.post('/login',investorService.login);
 
 module.exports = router;

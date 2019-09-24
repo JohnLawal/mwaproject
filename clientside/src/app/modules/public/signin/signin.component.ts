@@ -28,10 +28,11 @@ export class SigninComponent {
     this.password = this.loginForm.get('password');
    }
 
+   //  yvan login to the front End 
    login2 (){
     const signupresponse: any = this.httpConnection.signInUser(this.loginForm.value).subscribe(
       (response: any) => {
-  
+        localStorage.setItem('acess_token',response.token);
         this.router.navigate(['investor']);
      //   alert("Signed Up Sucessfully,...,"+response);
       },
@@ -40,6 +41,9 @@ export class SigninComponent {
       }
     );
    }
+
+   // End of  login 2 
+
 
   async login(){
       await this.validateUsername();
