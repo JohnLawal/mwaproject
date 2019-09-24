@@ -10,6 +10,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { AboutComponent } from './about/about.component';
 import { AuthService } from './service/authentication.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpconnectionService } from 'src/app/httpconnection.service';
 
 
 
@@ -39,9 +41,10 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  providers:[AuthService],
+  providers:[AuthService, HttpconnectionService],
   bootstrap: [LandingpageComponent]
 })
 export class PublicModule { }
