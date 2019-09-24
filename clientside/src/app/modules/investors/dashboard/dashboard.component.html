@@ -1,1 +1,60 @@
-<p>dashboard works!</p>
+<mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Total Farm Sponsorships
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    $500,000
+                </p>
+                <a mat-raised-button color="primary" routerLink="../myinvestments">View</a>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Farm Units Sponsored
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    15
+                </p>
+
+                <a mat-raised-button color="accent" routerLink="../myinvestments">View</a>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Farm Units Available</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    100
+                </p>
+                <a mat-raised-button color="warn" routerLink="../packages">View</a>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Followed Farms</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    3
+                </p>
+                <a mat-raised-button color="primary" routerLink="../myfollowedfarms">View</a>
+
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

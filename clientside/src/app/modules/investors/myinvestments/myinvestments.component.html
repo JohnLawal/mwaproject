@@ -1,1 +1,47 @@
-<p>myinvestments works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            My Investments
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
+                <mat-cell *matCellDef="let package"> {{package.name}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="units">
+                <mat-header-cell *matHeaderCellDef> Units </mat-header-cell>
+                <mat-cell *matCellDef="let package"> {{package.units}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+                <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+                <mat-cell *matCellDef="let package"> {{package.amount}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="dateOfInvestment">
+                <mat-header-cell *matHeaderCellDef> Date Invested </mat-header-cell>
+                <mat-cell *matCellDef="let package"> {{package.dateOfInvestment | date}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="contractPeriod">
+                <mat-header-cell *matHeaderCellDef> Contract Period </mat-header-cell>
+                <mat-cell *matCellDef="let package"> {{package.contractPeriod}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="expectedReturn">
+                <mat-header-cell *matHeaderCellDef> ROI </mat-header-cell>
+                <mat-cell *matCellDef="let package"> {{package.expectedReturn}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let package"> {{package.status}}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card-content>
+</mat-card>
