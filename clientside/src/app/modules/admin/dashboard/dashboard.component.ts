@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminHttpService } from '../admin-http.service';
+
+interface AdminDashboardStatistics {
+  numberOfMembers: number;
+  numberOfInvestors: number;
+  numberOfPendingOfflinePayments: number;
+  currentAmountInvested: string;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +15,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  dashboardStats: AdminDashboardStatistics;
+
+  constructor(private adminHttpService: AdminHttpService) { }
 
   ngOnInit() {
   }
