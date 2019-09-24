@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
-export interface Investment {
+interface Investment {
   name: string;
   units: number;
   amount: string;

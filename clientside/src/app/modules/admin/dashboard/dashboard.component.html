@@ -8,7 +8,7 @@
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    500
+                    {{dashboardStats?.numberOfMembers}}
                 </p>
                 <a mat-raised-button color="primary" routerLink="../members">View</a>
             </mat-card-content>
@@ -23,7 +23,7 @@
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    200
+                    {{dashboardStats?.numberOfInvestors}}
                 </p>
 
                 <a mat-raised-button color="accent" routerLink="../investments">View</a>
@@ -37,7 +37,7 @@
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    10
+                    {{dashboardStats?.numberOfPendingOfflinePayments}}
                 </p>
                 <a mat-raised-button color="warn" routerLink="../offlinepayments">View</a>
             </mat-card-content>
@@ -50,7 +50,7 @@
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    $300,000
+                    {{dashboardStats?.currentAmountInvested}}
                 </p>
                 <a mat-raised-button color="primary" routerLink="../investments">View</a>
 
