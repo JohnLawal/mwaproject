@@ -5,24 +5,40 @@ import {AngularMaterialModule} from '../../angular-material/angular-material.mod
 import {ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InvestorsComponent } from './investors.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MyinvestmentsComponent } from './myinvestments/myinvestments.component';
+import { PackagesComponent } from './packages/packages.component';
+import { ViewpackageComponent } from './viewpackage/viewpackage.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
+import { MyFollowedFarmsComponent } from './my-followed-farms/my-followed-farms.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MakePurchaseComponent } from './make-purchase/make-purchase.component';
 
 const routes: Routes = [
   {path: '', component: InvestorsComponent,
   children: [
-    // {path: 'dashboard' , component: SignupComponent},
-    // {path: 'myinvestments', component: SigninComponent},
-    // {path: 'packages', component: AboutComponent},
-    // {path: 'packages/:id', component: ForgotpasswordComponent},
-    // {path: 'myprofile', component: ResetpasswordComponent},
-    // {path: 'myinvestments', component: ResetpasswordComponent},
-    // {path: 'myfollowedfarms', component: ResetpasswordComponent},
-    // {path: 'contactus', component: ResetpasswordComponent},
-    // {path: 'buy/:id', component: ResetpasswordComponent}
+    {path: '' , component: DashboardComponent},
+    {path: 'dashboard' , component: DashboardComponent},
+    {path: 'myinvestments', component: MyinvestmentsComponent},
+    {path: 'packages', component: PackagesComponent},
+    {path: 'packages/:id', component: ViewpackageComponent},
+    {path: 'myprofile', component: MyprofileComponent},
+    {path: 'myfollowedfarms', component: MyFollowedFarmsComponent},
+    {path: 'contactus', component: ContactUsComponent},
+    {path: 'buy/:id', component: MakePurchaseComponent}
   ]}
 ];
 
 @NgModule({
-  declarations: [InvestorsComponent],
+  declarations: [InvestorsComponent,
+    DashboardComponent,
+    MyinvestmentsComponent,
+    PackagesComponent,
+     ViewpackageComponent,
+      MyprofileComponent,
+      MyFollowedFarmsComponent,
+      ContactUsComponent,
+      MakePurchaseComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
