@@ -1,5 +1,6 @@
 const Investor = require('../../respository/investor');
 const bcrypt = require('bcrypt');
+const {generateToken, decode} = require('../../../middlewares/jwt');
 
 const service = module.exports;
 
@@ -39,8 +40,13 @@ service.saveInvestor = async function (req, res, next){
         console.log(investorInfo);
         let newInvestor = new Investor(investorInfo);
         let savedData = await newInvestor.save();
-        res.json({complete:true, data: savedData});
+
+          const token1 = generateToken({ username: req.body.username, email : req.body.email,role : 'investor' });
+         // res.header("Authorization", "Bearer "+token);
+        //  response.status(200).json({ message: "successfully", key: token });
+          res.json({complete:true, token: token1});
     } catch (err) {
+        console.log(err);
         next(err);
     }
     
@@ -84,4 +90,41 @@ service.deleteInvestor = async function (req, res, next) {
     } catch (err) {
         next(err);
     }
+}
+
+
+service.login = function(request,response,next){
+
+    try {
+ 
+        Investor.findOne({username : request.body.username },(err,data)=>{
+
+            try {
+                if(err){
+                    response.status(500).json({status : 500 , message : "Error "+err});
+                }else if(!data){
+                    response.status(500).json({status : 400 , message : "Sorry, User Not Found"});
+                }else{
+                    if(bcrypt.compareSync(request.body.password,data.password)){
+
+                        const token1 = generateToken({ username: request.body.username, email : request.body.email ,role : 'investor'});
+                        response.json({complete:true, token: token1});
+                       
+                    }else{
+                        response.status(400).json({status : 400, message : 'Incorrect username or password'});
+                    } 
+                }
+                
+            } catch (error) {
+                response.status(400).json({status : 400, message : 'Error occured, '+error});
+
+            }
+           
+        }) 
+         
+        
+    } catch (error) {
+        response.status(400).json({status : 400, message : 'Error occured, '+error});
+    }
+ 
 }

@@ -7,11 +7,17 @@ providedIn : "root"
 export class HttpconnectionService {
 
   private signUpLink = 'http://localhost:2020/api/v1/invest';
+  private signInLink = 'http://localhost:2020/api/v1/invest/login';
+
 
   constructor(private httpClient: HttpClient) { }
 
  signUpUser(userData: any): any {
     return this.httpClient.post(this.signUpLink, userData);
+  }
+
+  signInUser(userData: any): any {
+    return this.httpClient.post(this.signInLink, userData);
   }
   /** 
   signInUser(userData: any): any {

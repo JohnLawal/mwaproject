@@ -23,9 +23,12 @@ let saveAdmin = function(request,response,next){
             if (err) console.log("Error happened " + err);
             console.log("User has been saved successfully" + admin);
           });
-          const token = generateToken({ username: request.body.username });
-          response.header("Authorization", "Bearer "+token);
-          response.status(200).json({ message: "successfully", key: token });
+
+          const token1 = generateToken({ username: request.body.username, email : request.body.email ,role : 'admin'});
+           response.json({complete:true, token: token1});
+          //const token = generateToken({ username: request.body.username });
+         // response.header("Authorization", "Bearer "+token);
+        //  response.status(200).json({ message: "successfully", key: token });
         
     } catch (error) {
     //  next(err)
@@ -123,9 +126,8 @@ let login = function(request,response,next){
                 }else{
                     if(bcrypt.compareSync(request.body.password,data.password)){
 
-                        const token = generateToken({ username: data.username, role : 'admin'});
-                        response.header("Authorization", "Bearer "+token);
-                        response.status(200).json({ message: "successfully", message : 'user logged in sucessfully'});
+                        const token1 = generateToken({ username: request.body.username, email : request.body.email ,role : 'admin'});
+                        response.json({complete:true, token: token1});
                        
                     }else{
                         response.status(400).json({status : 400, message : 'Incorrect username or password'});
@@ -133,7 +135,7 @@ let login = function(request,response,next){
                 }
                 
             } catch (error) {
-                response.status(400).json({status : 400, message : 'Error occured, '+error});
+                response.status(400).json({status : 400, message : 'unable to login, '+error});
 
             }
            

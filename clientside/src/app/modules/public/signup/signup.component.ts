@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { HttpconnectionService } from '../../../httpconnection.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   form : FormGroup;
 
-    constructor(fb: FormBuilder, private httpConnection: HttpconnectionService) {
+    constructor(fb: FormBuilder, private httpConnection: HttpconnectionService, private router : Router) {
         this.form = fb.group({
             
             "firstName":["",Validators.required],
@@ -28,11 +29,12 @@ export class SignupComponent implements OnInit {
       delete userData.passConfirm;
       const signupresponse: any = this.httpConnection.signUpUser(userData).subscribe(
         (response: any) => {
-        
-          alert("Signed Up Sucessfully,..." + response.complete);
+          localStorage.setItem('acess_token',response.token);
+          this.router.navigate(['investor']);
+       //   alert("Signed Up Sucessfully,...,"+response);
         },
         (error: any) => {
-          alert("Error: " + error.error.data);
+          alert("Failed to create account: " + error.error.data);
         }
       );
     }
