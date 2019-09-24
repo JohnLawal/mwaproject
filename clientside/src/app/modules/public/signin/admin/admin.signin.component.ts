@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpconnectionService } from '../../../../httpconnection.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-signin',
@@ -13,6 +14,8 @@ export class AdminSigninComponent {
   public username : AbstractControl;
   public password : AbstractControl;
   public badCredentials : boolean;
+
+  public jwtHelperService : JwtHelperService = new JwtHelperService();
 
   constructor(public router: Router, public httpConnection: HttpconnectionService, public formBuilder : FormBuilder) {
     this.loginForm = formBuilder.group({
@@ -27,16 +30,17 @@ export class AdminSigninComponent {
     this.httpConnection.signInAdmin(this.loginForm.value)
       .subscribe(
         (response: any) => {
-          console.log("Signed in");
           localStorage.setItem('access_token',response.token);
+          let userInfo = this.getUserInfo(response.token);
+          localStorage.setItem('user', JSON.stringify(userInfo));
           this.router.navigate(['admin']);
-          //   alert("Signed Up Sucessfully,...,"+response);
         },
         (error: any) => {
           alert("Failed to login" + error.error.data);
           throw(error);
         }
       );
+      console.log("done");
   }
 
   badUsername() : string {
@@ -49,6 +53,17 @@ export class AdminSigninComponent {
     if(this.password.hasError('required'))
       return "Password is required";
     return "";
+  }
+
+  getUserInfo(token : string) {
+    let decodedToken = this.jwtHelperService.decodeToken(token);
+    console.log("decoding token..");
+    console.log(decodedToken);
+    let userInfo = {
+      'username': decodedToken.username,
+      'role': decodedToken.role
+    };
+    return userInfo;
   }
 
 }

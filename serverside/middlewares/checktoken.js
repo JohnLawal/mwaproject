@@ -1,6 +1,8 @@
 const {decode} = require('./jwt')
 
 let checkToken = function(request, response, next){
+    console.log("Recievied the following header ...");
+    console.log(request.headers);
     let token = request.headers.authorization;
 try {
 

@@ -40,6 +40,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   logout(){
     localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
     this.router.navigate(['/public']);
   }
 

@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   bootstrap: [AppComponent]
 })
