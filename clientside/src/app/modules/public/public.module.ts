@@ -39,6 +39,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AngularMaterialModule,
     HttpClientModule,
