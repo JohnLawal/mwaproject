@@ -5,7 +5,7 @@ const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
 const app = express()
-
+const jwt = require('jsonwebtoken');
 
 const packagesRouter = require('./routes/packages/routes')
 const investorsRouter = require('./routes/investors/routes')
@@ -29,7 +29,6 @@ app.use(morgan('combined', { stream: accessLogStream }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-//app.use('/api/v1/public', publicRouter)
 app.use('/api/v1/invest', investorsRouter)
 app.use('/api/v1/admin', adminRouter)
 app.use('/api/v1/packages', packagesRouter)
