@@ -13,6 +13,7 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
 import { MyFollowedFarmsComponent } from './my-followed-farms/my-followed-farms.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MakePurchaseComponent } from './make-purchase/make-purchase.component';
+import { LogoutComponent } from './logout.component';
 
 const routes: Routes = [
   {path: '', component: InvestorsComponent,
@@ -25,7 +26,8 @@ const routes: Routes = [
     {path: 'myprofile', component: MyprofileComponent},
     {path: 'myfollowedfarms', component: MyFollowedFarmsComponent},
     {path: 'contactus', component: ContactUsComponent},
-    {path: 'buy/:id', component: MakePurchaseComponent}
+    {path: 'buy/:id', component: MakePurchaseComponent},
+    {path: 'logout', component: LogoutComponent}
   ]}
 ];
 
@@ -38,7 +40,8 @@ const routes: Routes = [
       MyprofileComponent,
       MyFollowedFarmsComponent,
       ContactUsComponent,
-      MakePurchaseComponent],
+      MakePurchaseComponent,
+      LogoutComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

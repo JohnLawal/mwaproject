@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
 import { promisify } from 'util';
 import { Router } from '@angular/router';
+import { HttpconnectionService } from '../../../httpconnection.service';
 
 @Component({
   selector: 'app-signin',
@@ -18,13 +19,26 @@ export class SigninComponent {
   public username : AbstractControl;
   public password : AbstractControl;
 
-  constructor(public router: Router, public formBuilder : FormBuilder) {
+  constructor(public router: Router, public formBuilder : FormBuilder,  private httpConnection: HttpconnectionService) {
     this.loginForm = formBuilder.group({
       "username" : ['',Validators.required],
       "password" : ['',Validators.required]
     })
     this.username = this.loginForm.get('username');
     this.password = this.loginForm.get('password');
+   }
+
+   login2 (){
+    const signupresponse: any = this.httpConnection.signInUser(this.loginForm.value).subscribe(
+      (response: any) => {
+  
+        this.router.navigate(['investor']);
+     //   alert("Signed Up Sucessfully,...,"+response);
+      },
+      (error: any) => {
+        alert("Failed to login" + error.error.data);
+      }
+    );
    }
 
   async login(){
