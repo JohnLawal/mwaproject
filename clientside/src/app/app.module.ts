@@ -10,6 +10,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import {AngularMaterialModule} from './angular-material/angular-material.module';
 import {ReactiveFormsModule} from "@angular/forms";
+import{HttpconnectionService} from "./httpconnection.service"
+import { HttpClientModule } from '@angular/common/http';
+import { from } from 'rxjs';
 
 
 
@@ -31,15 +34,18 @@ const routes: Routes = [
     SigninComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
-    AboutComponent
+    AboutComponent,
+   
+  
   ],
   imports: [
     BrowserModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ HttpconnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
