@@ -1,5 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
+import { promisify } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +18,7 @@ export class SigninComponent {
   public username : AbstractControl;
   public password : AbstractControl;
 
-  constructor(public formBuilder : FormBuilder) {
+  constructor(public router: Router, public formBuilder : FormBuilder) {
     this.loginForm = formBuilder.group({
       "username" : ['',Validators.required],
       "password" : ['',Validators.required]
@@ -25,14 +27,15 @@ export class SigninComponent {
     this.password = this.loginForm.get('password');
    }
 
-  login(){
-    // console.log("usernmae: " + this.username + "\npassword: " + this.password);
-    this.validateUsername()
-    if(!this.username.invalid){
-      console.log("username is valid");
-      this.validatePassword();
-    }
-      
+  async login(){
+      await this.validateUsername();
+      if (this.username.valid) {
+        await this.validatePassword();
+        if (this.password.valid) {
+          console.log("SUCCESS!");
+          this.router.navigate(['investor']);
+        } else console.log("bad password")
+      } else console.log("bad username");
   }
 
   badUsername() : string {
@@ -53,20 +56,16 @@ export class SigninComponent {
       return "";
   }
 
-  validateUsername() : boolean {
-    if (!(this.username.value == this.credentials.username)){
+  async validateUsername() {
+    let valid = await (this.username.value == this.credentials.username);
+    if (!valid)
       this.username.setErrors({'invalid':true})
-      return false;
-    }
-    return true;
   }
 
-  validatePassword() : boolean {
-    if (!(this.password.value == this.credentials.password)){
-      this.password.setErrors({'invalid':true})
-      return false;
-    }
-      return true;
+  async validatePassword() {
+    let valid = await(this.password.value == this.credentials.password);
+    if (!valid)
+      this.password.setErrors({'invalid':true});
   }
 
 
