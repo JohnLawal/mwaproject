@@ -2,11 +2,11 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'app-investors',
-  templateUrl: './investors.component.html',
-  styleUrls: ['./investors.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class InvestorsComponent implements OnInit, OnDestroy {
+export class AdminComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   currentUser: any;
 
@@ -33,8 +33,9 @@ export class InvestorsComponent implements OnInit, OnDestroy {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
-  removeQueryListener(){
+  removeQueryListener() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
 
 }

@@ -4,7 +4,7 @@
         <a [routerLink]="['dashboard']">
             <img width="40" alt="Logo" src="../../../assets/logo.png" />
         </a>
-        <span>FarmInvest</span>
+        <span>FarmInvest - {{currentUser.username}}'s Account</span>
     </mat-toolbar>
 
 
@@ -14,7 +14,6 @@
                 <a mat-list-item [routerLink]="['dashboard']">Dashboard</a>
                 <a mat-list-item [routerLink]="['myinvestments']">My Investments</a>
                 <a mat-list-item [routerLink]="['packages']">Browse Packages</a>
-                <a mat-list-item [routerLink]="['myinvestments']">My Investments</a>
                 <a mat-list-item [routerLink]="['myfollowedfarms']">Followed Farms</a>
                 <a mat-list-item [routerLink]="['myprofile']">My Profile</a>
                 <a mat-list-item [routerLink]="['contactus']">Contact Us</a>
