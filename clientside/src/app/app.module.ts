@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
-import{HttpconnectionService} from "./httpconnection.service"
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -17,13 +16,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ HttpconnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
