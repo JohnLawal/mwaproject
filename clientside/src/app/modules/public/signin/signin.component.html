@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label >Username</mat-label>
+      <input matInput [formControl]="username">
+      <mat-error *ngIf="!username.valid">{{badUsername()}}</mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput [formControl]="password" type="password">
+      <mat-error *ngIf="!password.valid">{{badPassword()}}</mat-error>
+    </mat-form-field>
+  </p>
+
+  <div class="centered">
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+  </div> 
+

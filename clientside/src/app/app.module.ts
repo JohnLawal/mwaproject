@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -14,18 +13,16 @@ import{HttpconnectionService} from "./httpconnection.service"
 import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'aboutus', redirectTo: 'about'},
-  {path: 'forgotpassword', component: ForgotpasswordComponent},
-  {path: 'resetpassword', component: ResetpasswordComponent},
-  
+  {path: '', loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)},
+  {path: 'investor', loadChildren: () => import('./modules/investors/investors.module').then(m => m.InvestorsModule)},
+  {path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)}
+
 ];
+
 
 @NgModule({
   declarations: [
@@ -43,6 +40,10 @@ const routes: Routes = [
     AngularMaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AppComponent
+  ],
+  imports: [
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ HttpconnectionService],
