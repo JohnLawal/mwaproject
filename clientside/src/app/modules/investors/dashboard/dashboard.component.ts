@@ -14,10 +14,12 @@ interface InvestorDashboardStatistics {
 })
 
 export class DashboardComponent implements OnInit {
+  hasInvested = false;
   dashboardStats: InvestorDashboardStatistics;
   constructor(private investorHttpService: InvestorHttpService) {
      investorHttpService.getDashboardStats().subscribe((res: any) => {
        this.dashboardStats = res.data;
+       this.hasInvested = res.data.mostRecentInvestment !== 'None';
      });
    }
 
