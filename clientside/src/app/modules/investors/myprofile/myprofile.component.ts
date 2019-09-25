@@ -58,9 +58,6 @@ export class MyprofileComponent implements OnInit {
     const signupresponse: any = this.httpConnection.updateInvestor(userData).subscribe(
       (response: any) => {
         alert("User updated sucessfully");
-        this.httpConnection.getuserInfo().subscribe((res:any)=>{
-          this.user = res.data;
-        });
       },
       (error: any) => {
         alert("Failed to create account, use different username or email");
