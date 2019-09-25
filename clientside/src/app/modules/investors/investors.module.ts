@@ -54,6 +54,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     AngularMaterialModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ],
   providers: [MediaMatcher, InvestorHttpService, InvestorGuard,HttpconnectionService]

@@ -5,13 +5,13 @@ const { getDashboardStats } = require('../../modules/services/investor/investord
 const { checkToken } = require('../../middlewares/checktoken');
 
 router.post('/contact',investorService.contact);
+
 router.get('/get', investorService.getAllInvestors);
 router.get('/get/:username', investorService.getInvestorByUsername);
 router.post('/save', investorService.saveInvestor);
 router.patch('/update/:username', investorService.updateInvestor);
 router.delete('/delete/:username', investorService.deleteInvestor);
 router.post('/login', investorService.login);
-
 //added by John for investor dashboard
 router.get('/dashboard', getDashboardStats);
 

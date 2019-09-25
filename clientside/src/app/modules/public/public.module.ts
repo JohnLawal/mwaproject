@@ -15,7 +15,6 @@ import { HttpconnectionService } from 'src/app/httpconnection.service';
 import {} from '../investors/contact-us/contact-us.component'
 
 
-
 const routes: Routes = [
   {path: '', redirectTo: 'public'},
   {path: 'public', component: LandingpageComponent,
