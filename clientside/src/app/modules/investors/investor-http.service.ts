@@ -7,6 +7,8 @@ export class InvestorHttpService {
   private getDashboardStatsLink = 'http://localhost:2020/api/v1/invest/dashboard';
   private getMyInvestmentsLink = 'http://localhost:2020/api/v1/invest/investments';
   private getAllPackagesLink = 'http://localhost:2020/api/v1/packages';
+  private getOnePackageLink = 'http://localhost:2020/api/v1/packages/';
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,6 +21,10 @@ export class InvestorHttpService {
   }
   getAllPackages(): any {
     return this.httpClient.get(this.getAllPackagesLink);
+  }
+
+  getOnePackage(packageId: any): any {
+    return this.httpClient.get(this.getOnePackageLink + packageId);
   }
 
 }
