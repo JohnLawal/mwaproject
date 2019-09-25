@@ -12,6 +12,7 @@ service.getInvestorByUsername = async function(req, res, next) {
     try {
         let username = req.params.username;
         let user = await Investor.findByUsername(username);
+        console.log(req.headers.authorization);
         res.json({ complete: true, data: user });
     } catch (err) {
         next(err);
@@ -63,7 +64,6 @@ service.updateInvestor = async function(req, res, next) {
         let username = req.params.username;
         let userData = req.body;
         if (userData.password) {
-            console.log("new Password detected")
             let hashedPassword = await bcrypt.hash(userData.password, 10);
             userData.password = hashedPassword;
         }
@@ -85,7 +85,7 @@ service.deleteInvestor = async function(req, res, next) {
     try {
         let username = req.params.username;
         let removed = await Investor.remove({ 'username': username });
-        console.log("..removed " + removed);
+        
         res.json({ complete: true, data: removed });
 
     } catch (err) {
@@ -139,7 +139,7 @@ service.contact = function(request,response,next){
    
               transporter.sendMail(mail, (err, data) => {
                 if (err) {
-                console.log(err);
+                
                 response.status(400).json({ message: 'failed to send  : '+err })
                 } else {
                     response.json({
@@ -150,7 +150,7 @@ service.contact = function(request,response,next){
              
             
         } catch (error) {
-            console.log(error);
+           
             response.status(400).json({status : 400, message : 'Connection Error'});
         }
     
