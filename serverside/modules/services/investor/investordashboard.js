@@ -17,7 +17,8 @@ handlers.getDashboardStats = async function(req, res, next) {
 
         let sum = await PackagesSchema.aggregate([{ $match: { status: "Available" } }, { $group: { _id: null, total: { $sum: "$amount" } } }]);
 
-        let totalUnitsAvailable = sum.length > 0 ? sum[0] : 0;
+
+        let totalUnitsAvailable = sum.length > 0 ? sum[0].total : 0;
 
         const numberOfInvestments = userInvestments.length;
         let numberOfFarmsFollowed = user.followedPackages.length;
@@ -25,6 +26,8 @@ handlers.getDashboardStats = async function(req, res, next) {
         let mostRecentInvestment = userInvestments.pop();
         if (!mostRecentInvestment) {
             mostRecentInvestment = "None"
+        } else {
+            mostRecentInvestment = mostRecentInvestment.dateOfInvestment
         }
 
         res.status(200).json({
@@ -40,6 +43,59 @@ handlers.getDashboardStats = async function(req, res, next) {
         next(Error(err))
     }
 
+}
+
+handlers.getInvestments = async function(req, res, next) {
+    // interface Investment {
+    //     name: string;
+    //     units: number;
+    //     amount: string;
+    //     dateOfInvestment: Date;
+    //     contractPeriod: string;
+    //     expectedReturn: string;
+    //     status: string;
+    //   }
+
+    try {
+        //get username
+        //the get invesments in packages where the username is this user's
+        const username = 'Tester';
+
+
+        let allinvestments = await InvestorSchema.find({ username: username }, { _id: 0, investedPackages: 1 });
+        let allMyInvestments = allinvestments[0].investedPackages;
+        let formattedInvestments = []
+
+
+        if (allinvestments.length) {
+            let formattedInv = [];
+            for (let inv of allMyInvestments) {
+                investmentPackageId = inv.packageId;
+                let package = await PackagesSchema.findById(investmentPackageId);
+                console.log(package);
+                formattedInv = inv;
+                formattedInv.name = package.name;
+                formattedInv.contractPeriod = package.contractPeriod + ' days';
+                formattedInv.expectedReturn = package.expectedReturn + ' %';
+                formattedInvestments.push(formattedInv);
+            }
+        }
+        // {
+        //     name: "Package One",
+        //     units: 2,
+        //     amount: "$200,00",
+        //     dateOfInvestment: new Date('01/13/1996'),
+        //     contractPeriod: "90 days",
+        //     expectedReturn: "$300,000",
+        //     status: "Current"
+        // }
+        res.status(200).json({
+            status: "Success",
+            data: formattedInvestments
+        })
+    } catch (err) {
+        next(Error(err))
+    }
 }
 
 module.exports = handlers;
