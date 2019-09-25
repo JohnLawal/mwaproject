@@ -61,33 +61,28 @@ handlers.getInvestments = async function(req, res, next) {
         //the get invesments in packages where the username is this user's
         const username = 'Tester';
 
-
         let allinvestments = await InvestorSchema.find({ username: username }, { _id: 0, investedPackages: 1 });
         let allMyInvestments = allinvestments[0].investedPackages;
         let formattedInvestments = []
 
         if (allinvestments.length) {
-            let formattedInv = {};
             for (let inv of allMyInvestments) {
                 investmentPackageId = inv.packageId;
                 let package = await PackagesSchema.findById(investmentPackageId);
-                console.log(package.name);
-                formattedInv = inv;
-                formattedInv.name = package.name;
-                formattedInv.contractPeriod = package.contractPeriod + ' days';
-                formattedInv.expectedReturn = package.expectedReturn + '%';
+
+                let formattedInv = {
+                    name: package.name,
+                    units: inv.units,
+                    amount: inv.amount,
+                    dateOfInvestment: inv.dateOfInvestment,
+                    contractPeriod: package.contractPeriod + ' days',
+                    expectedReturn: package.expectedReturn + '%',
+                    status: inv.status
+                }
                 formattedInvestments.push(formattedInv);
             }
         }
-        // {
-        //     name: "Package One",
-        //     units: 2,
-        //     amount: "$200,00",
-        //     dateOfInvestment: new Date('01/13/1996'),
-        //     contractPeriod: "90 days",
-        //     expectedReturn: "$300,000",
-        //     status: "Current"
-        // }
+
         res.status(200).json({
             status: "Success",
             data: formattedInvestments
