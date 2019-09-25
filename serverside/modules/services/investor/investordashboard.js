@@ -66,17 +66,16 @@ handlers.getInvestments = async function(req, res, next) {
         let allMyInvestments = allinvestments[0].investedPackages;
         let formattedInvestments = []
 
-
         if (allinvestments.length) {
-            let formattedInv = [];
+            let formattedInv = {};
             for (let inv of allMyInvestments) {
                 investmentPackageId = inv.packageId;
                 let package = await PackagesSchema.findById(investmentPackageId);
-                console.log(package);
+                console.log(package.name);
                 formattedInv = inv;
                 formattedInv.name = package.name;
                 formattedInv.contractPeriod = package.contractPeriod + ' days';
-                formattedInv.expectedReturn = package.expectedReturn + ' %';
+                formattedInv.expectedReturn = package.expectedReturn + '%';
                 formattedInvestments.push(formattedInv);
             }
         }
