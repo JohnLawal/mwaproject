@@ -5,14 +5,13 @@ import {AngularMaterialModule} from '../../angular-material/angular-material.mod
 import {ReactiveFormsModule} from '@angular/forms';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
+import { SigninComponent } from './signin/investor/signin.component';
+import { AdminSigninComponent } from './signin/admin/admin.signin.component'
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { AboutComponent } from './about/about.component';
-import { AuthService } from './service/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpconnectionService } from 'src/app/httpconnection.service';
-
 
 
 
@@ -22,6 +21,7 @@ const routes: Routes = [
   children: [
     {path: 'signup' , component: SignupComponent},
     {path: 'signin', component: SigninComponent},
+    {path: 'signin-admin', component: AdminSigninComponent},
     {path: 'about', component: AboutComponent},
     {path: 'forgotpassword', component: ForgotpasswordComponent},
     {path: 'resetpassword', component: ResetpasswordComponent}
@@ -33,6 +33,7 @@ const routes: Routes = [
     LandingpageComponent,
     SignupComponent,
     SigninComponent,
+    AdminSigninComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
     AboutComponent
@@ -45,7 +46,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  providers:[AuthService, HttpconnectionService],
+  providers:[HttpconnectionService],
   bootstrap: [LandingpageComponent]
 })
 export class PublicModule { }

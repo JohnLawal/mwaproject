@@ -13,7 +13,6 @@ let generateToken = function (userInfo){
 let decode = function(token){
     let length = token.length;
     token  = token.substring(7,length);
-
     return jwt.verify(token,jwtKey);
 }
 

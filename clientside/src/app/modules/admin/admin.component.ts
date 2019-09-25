@@ -1,5 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private  media: MediaMatcher) {
+  constructor(private changeDetectorRef: ChangeDetectorRef, private  media: MediaMatcher, private router : Router) {
    this.setupQueryListener();
    this.currentUser = {
      username: 'Johnny',
@@ -37,5 +38,10 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
+  logout(){
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/public']);
+  }
 
 }

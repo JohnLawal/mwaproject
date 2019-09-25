@@ -16,7 +16,7 @@
                 <a mat-list-item [routerLink]="['packages']">Packages</a>
                 <a mat-list-item [routerLink]="['members']">Members</a>
                 <a mat-list-item [routerLink]="['offlinepayments']">Offline Payments</a>
-                <a mat-list-item [routerLink]="['logout']">Log Out</a>
+                <a mat-list-item (click)="logout()">Logout</a>
             </mat-nav-list>
         </mat-sidenav>
 

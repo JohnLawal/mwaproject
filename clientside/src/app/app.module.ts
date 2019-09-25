@@ -5,6 +5,7 @@ import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InvestorInterceptor} from './modules/investor-interceptor.interceptor';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -24,7 +25,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InvestorInterceptor, multi: true}],
   bootstrap: [AppComponent]
