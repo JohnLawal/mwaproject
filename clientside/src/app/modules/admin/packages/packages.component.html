@@ -6,7 +6,7 @@
     </mat-card-header>
 </mat-card>
 
-<mat-grid-list cols="4" >
+<mat-grid-list cols="4">
     <mat-grid-tile *ngFor="let package of packages" class="padded">
         <mat-card class="card">
             <mat-card-header class="up">
@@ -17,10 +17,6 @@
                 <p>Contract Period : {{package.contractPeriod}} days</p>
                 <p>ROI : {{package.roi}}%</p>
             </mat-card-content>
-            <mat-card-actions class="down">
-                <button mat-button (click)="edit(package)">Edit</button>
-                <button mat-button (click)="delete(package)">Delete</button>
-            </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>

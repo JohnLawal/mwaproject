@@ -3,14 +3,15 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    Number of Members
+                    Create New Package
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    {{dashboardStats?.numberOfMembers}}
+                    Quick Link
                 </p>
-                <a mat-raised-button color="primary" routerLink="members">View</a>
+                <a mat-raised-button color="primary" [routerLink]="['packages','new']">Add New</a>
+
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
@@ -18,18 +19,18 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    Number of Investments
+                    Number of Members
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    {{dashboardStats?.numberOfInvesments}}
+                    {{dashboardStats?.numberOfMembers}}
                 </p>
-
-                <a mat-raised-button color="accent" routerLink="investments">View</a>
+                <a mat-raised-button color="accent" routerLink="members">View</a>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
+
     <mat-grid-tile>
         <mat-card>
             <mat-card-header>

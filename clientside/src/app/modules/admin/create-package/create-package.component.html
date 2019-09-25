@@ -1,0 +1,46 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Create Package
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="addPackage()">
+            <div class="example-container">
+                <p>
+                    <mat-form-field style=" width: 600px;">
+                        <input style=" width: 600px;" formControlName="name" matInput placeholder="Package Name" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field style=" width: 600px;">
+                        <input style=" width: 600px;" type="number" formControlName="amount" matInput placeholder="Amount" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field style=" width: 600px;">
+                        <input style=" width: 600px;" type="number" formControlName="contractPeriod" matInput placeholder="Contract Period (In Days)" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field style=" width: 600px;">
+                        <input style=" width: 600px;" type="number" step="0.1" formControlName="expectedReturn" matInput placeholder="Expected Return" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field style=" width: 600px;">
+                        <input style=" width: 600px;" type="number" formControlName="unitsAvailable" matInput placeholder="Units Available" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field style=" width: 600px;">
+                        <textarea style=" width: 100%;" formControlName="description" required matInput placeholder="Description"></textarea>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <button type="submit" mat-stroked-button color="warn">Add Package</button>
+                </p>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

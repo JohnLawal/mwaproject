@@ -7,6 +7,7 @@ export class AdminHttpService {
   private getAllInvestmentsLink = 'http://localhost:2020/api/v1/admin/investments';
   private getAllPackagesLink = 'http://localhost:2020/api/v1/packages/';
   private getOfflinePaymentsLink = 'http://localhost:2020/api/v1/admin/offlinepayments';
+  private postPackageLink = 'http://localhost:2020/api/v1/packages';
 
   private getAdminInfoLink = 'http://localhost:2020/api/v1/admin/get/';
   private getUsersLink = 'http://localhost:2020/api/v1/invest/get/';
@@ -30,5 +31,9 @@ export class AdminHttpService {
   }
   getUsers(): any {
     return this.httpClient.get(this.getUsersLink);
+  }
+
+  postPackage(packageInfo: any): any {
+    return this.httpClient.post(this.postPackageLink, packageInfo);
   }
 }

@@ -18,6 +18,7 @@ import {  HttpClientModule } from '@angular/common/http';
 import { AdminGuardGuard } from './admin-guard.guard';
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor} from '../../custom-interceptor.interceptor';
+import { CreatePackageComponent } from './create-package/create-package.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
     {path: 'dashboard' , component: DashboardComponent, canActivate: [AdminGuardGuard]},
     {path: 'investments', component: InvestmentsComponent, canActivate: [AdminGuardGuard]},
     {path: 'packages', component: PackagesComponent, canActivate: [AdminGuardGuard]},
-    {path: 'packages/:id', component: ViewpackageComponent, canActivate: [AdminGuardGuard]},
+    {path: 'packages/new', component: CreatePackageComponent, canActivate: [AdminGuardGuard]},
+    {path: 'packages/view/:id', component: ViewpackageComponent, canActivate: [AdminGuardGuard]},
     {path: 'members', component: MembersComponent, canActivate: [AdminGuardGuard]},
     {path: 'members/:id', component: ViewmemberComponent, canActivate: [AdminGuardGuard]},
     {path: 'offlinepayments', component: OfflinepaymentsComponent, canActivate: [AdminGuardGuard]},
@@ -42,7 +44,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [AdminComponent, DashboardComponent,
      PackagesComponent, InvestmentsComponent,
-      MembersComponent, OfflinepaymentsComponent, ViewmemberComponent, ViewpackageComponent],
+      MembersComponent, OfflinepaymentsComponent, ViewmemberComponent,
+       ViewpackageComponent, CreatePackageComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
