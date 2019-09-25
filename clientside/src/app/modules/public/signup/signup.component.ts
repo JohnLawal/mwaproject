@@ -31,10 +31,11 @@ export class SignupComponent implements OnInit {
         (response: any) => {
           localStorage.setItem('access_token',response.token);
           this.router.navigate(['investor']);
-       //   alert("Signed Up Sucessfully,...,"+response);
+          alert("Signed Up Sucessfully");
         },
         (error: any) => {
-          alert("Failed to create account: " + error.error.data);
+          alert("Failed to create account, use different username or email");
+          this.form.reset();
         }
       );
     }

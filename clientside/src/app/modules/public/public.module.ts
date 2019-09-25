@@ -12,7 +12,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { AboutComponent } from './about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpconnectionService } from 'src/app/httpconnection.service';
-
+import {} from '../investors/contact-us/contact-us.component'
 
 
 const routes: Routes = [

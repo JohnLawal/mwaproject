@@ -1,7 +1,7 @@
 import { InvestorHttpService } from './../investor-http.service';
 import { Component, OnInit } from '@angular/core';
 interface InvestorDashboardStatistics {
-  mostRecentInvestment: string;
+  mostRecentInvestment: Date;
   totalUnitsAvailable: number;
   numberOfInvestments: number;
   numberOfFarmsFollowed: number;
@@ -12,6 +12,7 @@ interface InvestorDashboardStatistics {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
   dashboardStats: InvestorDashboardStatistics;
   constructor(private investorHttpService: InvestorHttpService) {
