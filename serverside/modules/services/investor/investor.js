@@ -127,13 +127,13 @@ service.contact = function(request,response,next){
         try {
             let email ="remymailsender@gmail.com";
 
-            let userEmail = request.body.email;
+            let title = request.body.title;
             let message = request.body.message;
 
             var mail = {
                 from: email,
-                to: userEmail,  //Change to email address that you want to receive messages on
-                subject: 'New Message from Contact Form',
+                to: email,  //Change to email address that you want to receive messages on
+                subject: title, 
                 text: message
               } 
    
