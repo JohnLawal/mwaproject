@@ -1,6 +1,5 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
-import { promisify } from 'util';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpconnectionService } from '../../../httpconnection.service';
 
