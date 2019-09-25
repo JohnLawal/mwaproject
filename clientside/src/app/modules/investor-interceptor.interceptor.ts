@@ -5,9 +5,9 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 @Injectable()
 export class InvestorInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const userToken = localStorage.get('access_token');
+        const userToken = localStorage.getItem('access_token');
         const authRequest = req.clone(
-            {headers: req.headers.set('Authorization', 'Bearer ' + userToken)});
+            {headers: req.headers.set('Authorization', 'Bearer '+userToken)});
         return next.handle(authRequest);
     }
 }

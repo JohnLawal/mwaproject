@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpconnectionService } from '../../httpconnection.service';
 import { InvestorGuard } from './investor.guard';
 import {InvestorHttpService} from './investor-http.service';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InvestorInterceptor} from '../../modules/investor-interceptor.interceptor';
 
 const routes: Routes = [
   {path: '', component: InvestorsComponent, canActivate: [InvestorGuard], canActivateChild: [InvestorGuard],
@@ -57,7 +59,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  providers: [MediaMatcher, InvestorHttpService, InvestorGuard,HttpconnectionService]
+  providers: [MediaMatcher, InvestorHttpService, InvestorGuard,HttpconnectionService,{provide: HTTP_INTERCEPTORS, useClass: InvestorInterceptor, multi: true}]
 })
 export class InvestorsModule {
 }

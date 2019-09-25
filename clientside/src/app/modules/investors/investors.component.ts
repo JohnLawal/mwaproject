@@ -1,5 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-investors',
@@ -10,13 +11,19 @@ export class InvestorsComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   currentUser: any;
 
+       token = localStorage.getItem('access_token');
+       helper = new JwtHelperService();
+      tokenBody = this.helper.decodeToken(this.token);
+      username = this.tokenBody.username
+      email = this.tokenBody.email
+
   private _mobileQueryListener: () => void;
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private  media: MediaMatcher) {
    this.setupQueryListener();
    this.currentUser = {
-     username: 'Johnny',
-     email: 'johnimholawal@gmail.com'};
+     username: this.username,
+     email: this.email};
   }
 
   ngOnInit() {
