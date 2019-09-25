@@ -15,16 +15,16 @@ export class MembersComponent implements OnInit {
   constructor(public http : AdminHttpService) { }
 
   ngOnInit() {
-    let user = JSON.parse(localStorage.getItem('user'));
-    this.http.getAdmin(user.username).subscribe(
-      (response:any) => {
-        console.log('success');
-        console.log(response);
-      }, 
-      (error:any) => {
-        console.log(error);
-      }
-    );
+  //  let user = JSON.parse(localStorage.getItem('user'));
+  //  this.http.getAdmin(user.username).subscribe(
+   //   (response:any) => {
+   //     console.log('success');
+  //      console.log(response);
+  //    }, 
+  //    (error:any) => {
+//        console.log(error);
+//      }
+//    );
   }
 
 }

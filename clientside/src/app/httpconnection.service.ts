@@ -8,15 +8,12 @@ providedIn : "root"
 })
 export class HttpconnectionService {
 
-  
 
-
-
-  private signUpLink = 'http://localhost:2020/api/v1/invest';
+  private signUpLink = 'http://localhost:2020/api/v1/invest/save';
   private signInLink = 'http://localhost:2020/api/v1/invest/login';
   private contactLink = 'http://localhost:2020/api/v1/invest/contact';
-  private getUserLink = 'http://localhost:2020/api/v1/invest/';
-  private updateLink = 'http://localhost:2020/api/v1/invest/'
+  private getUserLink = 'http://localhost:2020/api/v1/invest/get/';
+  private updateLink = 'http://localhost:2020/api/v1/invest/update/'
 
   private adminSingInLink = 'http://localhost:2020/api/v1/admin/login';
 

@@ -54,10 +54,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     AngularMaterialModule,
-    HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  providers: [MediaMatcher, InvestorHttpService, InvestorGuard]
+  providers: [MediaMatcher, InvestorHttpService, InvestorGuard,HttpconnectionService]
 })
 export class InvestorsModule {
 }
