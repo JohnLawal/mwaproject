@@ -14,7 +14,7 @@ export class ContactUsComponent implements OnInit {
 
   constructor(fb: FormBuilder, private router : Router, private httpConnection : HttpconnectionService) {
       this.form = fb.group({
-          "email":["",Validators.compose([Validators.required,Validators.email])],
+          "title":["",Validators.required],
           "message":["",Validators.required],
       });
   }

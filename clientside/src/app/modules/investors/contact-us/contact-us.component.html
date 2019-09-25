@@ -8,23 +8,23 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="example-container">
           <p>
-        <mat-form-field>
+        <mat-form-field style=" width: 600px;">
           <input
             matInput
-            placeholder="Enter your email"
-            formControlName="email"
+            placeholder="Enter message title"
+            formControlName="title"
             required
           />
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field>
+        <mat-form-field style=" width: 600px;">
           <textarea
             style=" width: 100%;"
             formControlName="message"
             required
             matInput
-            placeholder="Writes you message"
+            placeholder="Write your content"
           ></textarea>
         </mat-form-field>
     </p>
