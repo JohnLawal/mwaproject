@@ -11,6 +11,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -28,7 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
             MatToolbarModule,
             MatGridListModule,
             MatTableModule,
-            MatMenuModule
+            MatMenuModule,
+            MatDialogModule
           ],
   exports: [
             MatButtonModule,
@@ -42,7 +44,8 @@ import {MatMenuModule} from '@angular/material/menu';
             MatToolbarModule,
             MatGridListModule,
             MatTableModule,
-            MatMenuModule
+            MatMenuModule,
+            MatDialogModule
           ],
 })
 export class AngularMaterialModule { }

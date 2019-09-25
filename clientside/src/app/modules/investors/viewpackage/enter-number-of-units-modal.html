@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Buy Units</h1>
+<div mat-dialog-content>
+    <p>How Many Units Do You Want To Buy?</p>
+    <mat-form-field>
+        <input type="number" matInput [(ngModel)]="data.unitsToBuy">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data.unitsToBuy" cdkFocusInitial>Proceed</button>
+</div>

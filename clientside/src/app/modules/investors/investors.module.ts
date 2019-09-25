@@ -8,7 +8,7 @@ import { InvestorsComponent } from './investors.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyinvestmentsComponent } from './myinvestments/myinvestments.component';
 import { PackagesComponent } from './packages/packages.component';
-import { ViewpackageComponent } from './viewpackage/viewpackage.component';
+import { ViewpackageComponent, DialogUnitsComponent } from './viewpackage/viewpackage.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { MyFollowedFarmsComponent } from './my-followed-farms/my-followed-farms.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
@@ -20,7 +20,7 @@ import { InvestorGuard } from './investor.guard';
 import {InvestorHttpService} from './investor-http.service';
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor} from '../../custom-interceptor.interceptor';
-
+import { FormsModule } from '@angular/forms';
 const routes: Routes = [
   {path: '', component: InvestorsComponent, canActivate: [InvestorGuard], canActivateChild: [InvestorGuard],
   children: [
@@ -46,18 +46,24 @@ const routes: Routes = [
     MyinvestmentsComponent,
     PackagesComponent,
      ViewpackageComponent,
+     DialogUnitsComponent,
       MyprofileComponent,
       MyFollowedFarmsComponent,
       ContactUsComponent,
       MakePurchaseComponent,
-      LogoutComponent],
+      LogoutComponent
+    ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     AngularMaterialModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forChild(routes)
+  ],
+  entryComponents: [ViewpackageComponent,
+    DialogUnitsComponent
   ],
   providers: [MediaMatcher, InvestorHttpService, InvestorGuard, HttpconnectionService,
     {provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true}]

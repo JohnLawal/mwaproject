@@ -12,8 +12,8 @@
         <p>Expected Return: {{package?.expectedReturn}}%</p>
     </mat-card-content>
     <mat-card-actions>
-        <a mat-raised-button color="primary" routerLink="{{package._id}}">Follow</a>
-        <a mat-raised-button color="warn" routerLink="{{package._id}}">Buy</a>
+        <a mat-raised-button color="primary">Follow</a>
+        <a mat-raised-button color="warn" (click)="openDialog()">Buy</a>
 
     </mat-card-actions>
 </mat-card>
