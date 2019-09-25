@@ -18,7 +18,7 @@ dateRegisterd : Date
 
 // Custom Methods
 investorSchema.statics.findByUsername = function(_username, callback){
-    return this.find({username: _username}, callback);
+    return this.findOne({username: _username}, callback);
 }
 
 investorSchema.methods.findInvestments = function(_username, callback){

@@ -1,6 +1,7 @@
 const Investor = require('../../respository/investor');
 const bcrypt = require('bcrypt');
 const {generateToken, decode} = require('../../../middlewares/jwt');
+const {transporter} = require('../mailSender');
 
 const service = module.exports;
 
@@ -66,8 +67,8 @@ service.updateInvestor = async function (req, res, next) {
             let hashedPassword = await bcrypt.hash(userData.password,10);
             userData.password = hashedPassword; 
         }
-        console.log("new data === " + JSON.stringify(userData));
-        await Investor.update({'username' : username},userData);
+        console.log("new data === " + JSON.stringify(userData) +" and username :"+username );
+        await Investor.updateOne({'username': username},userData);
         res.json({complete:true, data: null});
     } catch (err) {
         next(err);
@@ -92,13 +93,9 @@ service.deleteInvestor = async function (req, res, next) {
     }
 }
 
-
 service.login = function(request,response,next){
-
     try {
- 
         Investor.findOne({username : request.body.username },(err,data)=>{
-
             try {
                 if(err){
                     response.status(500).json({status : 500 , message : "Error "+err});
@@ -106,15 +103,12 @@ service.login = function(request,response,next){
                     response.status(500).json({status : 400 , message : "Sorry, User Not Found"});
                 }else{
                     if(bcrypt.compareSync(request.body.password,data.password)){
-
-                        const token1 = generateToken({ username: request.body.username, email : request.body.email ,role : 'investor'});
+                        const token1 = generateToken({ username: request.body.username, email : request.body.email ,role :'investor'});
                         response.json({complete:true, token: token1});
-                       
                     }else{
                         response.status(400).json({status : 400, message : 'Incorrect username or password'});
                     } 
                 }
-                
             } catch (error) {
                 response.status(400).json({status : 400, message : 'Error occured, '+error});
 
@@ -126,5 +120,38 @@ service.login = function(request,response,next){
     } catch (error) {
         response.status(400).json({status : 400, message : 'Error occured, '+error});
     }
- 
 }
+
+
+service.contact = function(request,response,next){
+        try {
+            let email ="remymailsender@gmail.com";
+
+            let userEmail = request.body.email;
+            let message = request.body.message;
+
+            var mail = {
+                from: email,
+                to: userEmail,  //Change to email address that you want to receive messages on
+                subject: 'New Message from Contact Form',
+                text: message
+              } 
+   
+              transporter.sendMail(mail, (err, data) => {
+                if (err) {
+                console.log(err);
+                response.status(400).json({ message: 'failed to send  : '+err })
+                } else {
+                    response.json({
+                    message: 'message sent sucessfully'
+                  })
+                }
+              });
+             
+            
+        } catch (error) {
+            console.log(error);
+            response.status(400).json({status : 400, message : 'Connection Error'});
+        }
+    
+    }
