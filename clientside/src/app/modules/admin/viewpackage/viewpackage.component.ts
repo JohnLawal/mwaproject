@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./viewpackage.component.css']
 })
 export class ViewpackageComponent implements OnInit {
-
+  
+  public showFiller = false;
+  
   constructor() { }
 
   ngOnInit() {
