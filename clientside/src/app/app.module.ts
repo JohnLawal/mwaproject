@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InvestorInterceptor} from './modules/investor-interceptor.interceptor';
+import { CustomInterceptor} from './custom-interceptor.interceptor';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -27,7 +27,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InvestorInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

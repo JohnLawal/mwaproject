@@ -14,8 +14,11 @@ import { ViewmemberComponent } from './viewmember/viewmember.component';
 import { ViewpackageComponent } from './viewpackage/viewpackage.component';
 import { AdminHttpService } from './admin-http.service';
 import {  HttpClientModule } from '@angular/common/http';
-import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+// import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { AdminGuardGuard } from './admin-guard.guard';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomInterceptor} from '../../custom-interceptor.interceptor';
+
 
 const routes: Routes = [
   {path: '', component: AdminComponent, canActivate: [AdminGuardGuard], canActivateChild: [AdminGuardGuard],
@@ -54,7 +57,7 @@ const routes: Routes = [
     //   }
     // })
   ],
-  providers: [MediaMatcher, AdminHttpService, AdminGuardGuard]
+  providers: [MediaMatcher, AdminHttpService, AdminGuardGuard , {provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true}]
 })
 export class AdminModule {
 }

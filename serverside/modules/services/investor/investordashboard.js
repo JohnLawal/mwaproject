@@ -10,7 +10,7 @@ handlers.getDashboardStats = async function(req, res, next) {
     try {
         //get users id
         //the get invesments in packages where the username is this user's
-        const username = 'Tester';
+        const username = req.username;
         let user = await InvestorSchema.find({ username: username })
         user = user[0];
         let userInvestments = user.investedPackages;
@@ -59,7 +59,7 @@ handlers.getInvestments = async function(req, res, next) {
     try {
         //get username
         //the get invesments in packages where the username is this user's
-        const username = 'Tester';
+        const username = req.username;
 
         let allinvestments = await InvestorSchema.find({ username: username }, { _id: 0, investedPackages: 1 });
         let allMyInvestments = allinvestments[0].investedPackages;

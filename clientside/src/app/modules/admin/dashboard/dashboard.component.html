@@ -10,7 +10,7 @@
                 <p>
                     {{dashboardStats?.numberOfMembers}}
                 </p>
-                <a mat-raised-button color="primary" routerLink="../members">View</a>
+                <a mat-raised-button color="primary" routerLink="members">View</a>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
@@ -18,28 +18,28 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    Number of Investors
+                    Number of Investments
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    {{dashboardStats?.numberOfInvestors}}
+                    {{dashboardStats?.numberOfInvesments}}
                 </p>
 
-                <a mat-raised-button color="accent" routerLink="../investments">View</a>
+                <a mat-raised-button color="accent" routerLink="investments">View</a>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
         <mat-card>
             <mat-card-header>
-                <mat-card-title>Pending Offline Payments</mat-card-title>
+                <mat-card-title>Number of Packages</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    {{dashboardStats?.numberOfPendingOfflinePayments}}
+                    {{dashboardStats?.numberOfPackages}}
                 </p>
-                <a mat-raised-button color="warn" routerLink="../offlinepayments">View</a>
+                <a mat-raised-button color="warn" routerLink="packages">View</a>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
@@ -52,7 +52,7 @@
                 <p>
                     {{dashboardStats?.currentAmountInvested}}
                 </p>
-                <a mat-raised-button color="primary" routerLink="../investments">View</a>
+                <a mat-raised-button color="primary" routerLink="investments">View</a>
 
             </mat-card-content>
         </mat-card>

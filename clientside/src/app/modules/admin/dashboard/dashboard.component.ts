@@ -3,8 +3,8 @@ import { AdminHttpService } from '../admin-http.service';
 
 interface AdminDashboardStatistics {
   numberOfMembers: number;
-  numberOfInvestors: number;
-  numberOfPendingOfflinePayments: number;
+  numberOfInvesments: number;
+  numberOfPackages: number;
   currentAmountInvested: string;
 }
 
@@ -17,7 +17,12 @@ export class DashboardComponent implements OnInit {
 
   dashboardStats: AdminDashboardStatistics;
 
-  constructor(private adminHttpService: AdminHttpService) { }
+  constructor(private adminHttpService: AdminHttpService) { 
+        adminHttpService.getDashboardStats().subscribe((res: any) => {
+            this.dashboardStats = res.data;
+        });
+   }
+
 
   ngOnInit() {
   }
