@@ -8,7 +8,7 @@
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    {{dashboardStats?.mostRecentInvestment}}
+                    {{dashboardStats?.mostRecentInvestment | date}}
                 </p>
                 <a mat-raised-button color="primary" routerLink="myinvestments">View</a>
             </mat-card-content>
