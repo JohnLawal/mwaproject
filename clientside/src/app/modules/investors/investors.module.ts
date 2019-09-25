@@ -16,9 +16,11 @@ import { MakePurchaseComponent } from './make-purchase/make-purchase.component';
 import { LogoutComponent } from './logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpconnectionService } from '../../httpconnection.service';
+import { InvestorGuard } from './investor.guard';
+import {InvestorHttpService} from './investor-http.service';
 
 const routes: Routes = [
-  {path: '', component: InvestorsComponent,
+  {path: '', component: InvestorsComponent, canActivate: [InvestorGuard], canActivateChild: [InvestorGuard],
   children: [
     {path: '' , component: DashboardComponent},
     {path: 'dashboard' , component: DashboardComponent},
@@ -33,8 +35,11 @@ const routes: Routes = [
   ]}
 ];
 
+
+
 @NgModule({
-  declarations: [InvestorsComponent,
+  declarations: [
+    InvestorsComponent,
     DashboardComponent,
     MyinvestmentsComponent,
     PackagesComponent,
@@ -49,9 +54,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     AngularMaterialModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  providers: [MediaMatcher,HttpconnectionService]
+  providers: [MediaMatcher, InvestorHttpService, InvestorGuard]
 })
 export class InvestorsModule {
 }

@@ -14,7 +14,7 @@ import { ViewmemberComponent } from './viewmember/viewmember.component';
 import { ViewpackageComponent } from './viewpackage/viewpackage.component';
 import { AdminHttpService } from './admin-http.service';
 import {  HttpClientModule } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { AdminGuardGuard } from './admin-guard.guard';
 
 const routes: Routes = [
@@ -25,15 +25,17 @@ const routes: Routes = [
     {path: 'investments', component: InvestmentsComponent, canActivate: [AdminGuardGuard]},
     {path: 'packages', component: PackagesComponent, canActivate: [AdminGuardGuard]},
     {path: 'packages/:id', component: ViewpackageComponent, canActivate: [AdminGuardGuard]},
+    {path: 'members', component: MembersComponent, canActivate: [AdminGuardGuard]},
     {path: 'members/:id', component: ViewmemberComponent, canActivate: [AdminGuardGuard]},
     {path: 'offlinepayments', component: OfflinepaymentsComponent, canActivate: [AdminGuardGuard]},
   ]}
 ];
 
-export function tokenGetter() {
-  localStorage.setItem('access_token', 'testing');
-  return localStorage.getItem('access_token');
-}
+// export function tokenGetter() {
+//   console.log("token getter is triggered....");
+//   return localStorage.getItem('access_token');
+// }
+
 @NgModule({
   declarations: [AdminComponent, DashboardComponent,
      PackagesComponent, InvestmentsComponent,
@@ -45,12 +47,12 @@ export function tokenGetter() {
     HttpClientModule,
     RouterModule.forChild(routes),
     // This import uses the angular jwt module to add token to the requests
-    JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        blacklistedRoutes: ['localhost:2020/api/v1']
-      }
-    })
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter,
+    //     whitelistedDomains: ['localhost:2020/api/v1']
+    //   }
+    // })
   ],
   providers: [MediaMatcher, AdminHttpService, AdminGuardGuard]
 })

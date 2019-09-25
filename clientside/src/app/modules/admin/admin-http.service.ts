@@ -8,6 +8,8 @@ export class AdminHttpService {
   private getAllPackagesLink = 'http://localhost:2020/api/v1/protected';
   private getOfflinePaymentsLink = 'http://localhost:2020/api/v1/users/verifyemail';
 
+  private getAdminInfoLink = 'http://localhost:2020/api/v1/admin/get/'
+
   constructor(private httpClient: HttpClient) { }
 
   getDashboardStats(): any {
@@ -21,5 +23,9 @@ export class AdminHttpService {
   }
   getOfflinePayments(): any {
     return this.httpClient.get(this.getOfflinePaymentsLink);
+  }
+
+  getAdmin(id : string) : any {
+    return this.httpClient.get(this.getAdminInfoLink + id);
   }
 }

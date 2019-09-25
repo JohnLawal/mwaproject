@@ -18,6 +18,7 @@ export class HttpconnectionService {
   private getUserLink = 'http://localhost:2020/api/v1/invest/';
   private updateLink = 'http://localhost:2020/api/v1/invest/'
 
+  private adminSingInLink = 'http://localhost:2020/api/v1/admin/login';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -59,5 +60,10 @@ export class HttpconnectionService {
   }
 
   */
+
+  // asynchronous
+  signInAdmin(adminData: any) {
+    return this.httpClient.post(this.adminSingInLink, adminData);
+  }
 
 }
