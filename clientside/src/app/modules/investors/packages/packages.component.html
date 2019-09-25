@@ -1,10 +1,16 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            Available Packages
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <h3>This feature is coming Soon</h3>
-    </mat-card-content>
-</mat-card>
+<mat-grid-list cols="4">
+    <mat-grid-tile *ngFor="let package of packages" class="padded">
+        <mat-card class="card">
+            <mat-card-header class="up">
+                <mat-card-title>{{package.name}}</mat-card-title>
+                <mat-card-subtitle>${{package.amount}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="mid">
+                <p>Contract Period : {{package.contractPeriod}} days</p>
+                <p>ROI : {{package.expectedReturn}}%</p>
+                <a mat-raised-button color="primary" routerLink="view/{{package._id}}">View Details</a>
+
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

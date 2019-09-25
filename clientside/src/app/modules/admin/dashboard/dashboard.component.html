@@ -47,13 +47,13 @@
     <mat-grid-tile>
         <mat-card>
             <mat-card-header>
-                <mat-card-title>Current Amount Invested</mat-card-title>
+                <mat-card-title>Pending Requests</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <p>
-                    {{dashboardStats?.currentAmountInvested}}
-                </p>
-                <a mat-raised-button color="primary" routerLink="investments">View</a>
+                    <p>
+                            Quick Link
+                    </p>
+                    <a mat-raised-button color="primary" [routerLink]="['offlinepayments']">View</a>
 
             </mat-card-content>
         </mat-card>
