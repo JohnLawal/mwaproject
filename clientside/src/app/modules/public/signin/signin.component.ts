@@ -32,7 +32,7 @@ export class SigninComponent {
    login2 (){
     const signupresponse: any = this.httpConnection.signInUser(this.loginForm.value).subscribe(
       (response: any) => {
-        localStorage.setItem('acess_token',response.token);
+        localStorage.setItem('access_token',response.token);
         this.router.navigate(['investor']);
      //   alert("Signed Up Sucessfully,...,"+response);
       },

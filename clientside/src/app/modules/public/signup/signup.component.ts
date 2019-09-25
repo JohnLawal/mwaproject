@@ -29,12 +29,13 @@ export class SignupComponent implements OnInit {
       delete userData.passConfirm;
       const signupresponse: any = this.httpConnection.signUpUser(userData).subscribe(
         (response: any) => {
-          localStorage.setItem('acess_token',response.token);
+          localStorage.setItem('access_token',response.token);
           this.router.navigate(['investor']);
-       //   alert("Signed Up Sucessfully,...,"+response);
+          alert("Signed Up Sucessfully,...,"+response);
         },
         (error: any) => {
-          alert("Failed to create account: " + error.error.data);
+          alert("Failed to create account, use different username or email");
+          this.form.reset();
         }
       );
     }

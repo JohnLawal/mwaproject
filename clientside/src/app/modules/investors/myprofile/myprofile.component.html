@@ -1,10 +1,53 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            My Profile
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <h3>This feature is coming Soon</h3>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>
+      My Profile
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+<form [formGroup]="form" (ngSubmit)="updateInfo()">
+    <div class="example-container">
+      <p>
+        <mat-form-field>
+          <input formControlName="firstName" matInput placeholder="First Name" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input   formControlName="lastName" matInput placeholder="Last Name" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input   formControlName="username" matInput placeholder="Username" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="number"   formControlName="accountNumber" matInput placeholder="Account Number" />
+        </mat-form-field>
+      </p>
+
+      <p>
+            <mat-form-field>
+              <input formControlName="bankName" matInput placeholder="Bank Name" />
+            </mat-form-field>
+          </p>
+      <p>
+        <mat-form-field>
+          <input   formControlName="email" matInput placeholder="Email" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="number"   formControlName="phoneNumber" matInput placeholder="Phone Number" />
+        </mat-form-field>
+      </p>
+      <p>
+         <mat-checkbox formControlName="edit">Edit Info</mat-checkbox>&nbsp;&nbsp;&nbsp;&nbsp;
+         <button type="submit"  [disabled]="!form.value.edit" mat-stroked-button color="warn">Update info</button>
+      </p>
+    </div>
+    </form>
+  </mat-card-content>
 </mat-card>

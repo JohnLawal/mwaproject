@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { AuthService } from './service/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpconnectionService } from 'src/app/httpconnection.service';
+import {} from '../investors/contact-us/contact-us.component'
 
 
 

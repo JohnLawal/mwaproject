@@ -13,7 +13,7 @@ export class LogoutComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit() {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('acess_token');
     this.router.navigate(['public']);
   }
 

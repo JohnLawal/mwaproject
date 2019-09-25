@@ -14,6 +14,8 @@ import { MyFollowedFarmsComponent } from './my-followed-farms/my-followed-farms.
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MakePurchaseComponent } from './make-purchase/make-purchase.component';
 import { LogoutComponent } from './logout.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpconnectionService } from '../../httpconnection.service';
 
 const routes: Routes = [
   {path: '', component: InvestorsComponent,
@@ -45,10 +47,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AngularMaterialModule,
     RouterModule.forChild(routes)
   ],
-  providers: [MediaMatcher]
+  providers: [MediaMatcher,HttpconnectionService]
 })
 export class InvestorsModule {
 }

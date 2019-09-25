@@ -10,6 +10,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
+ 
+
 
 
 
@@ -25,7 +27,9 @@ import {MatTableModule} from '@angular/material/table';
             MatIconModule,
             MatToolbarModule,
             MatGridListModule,
-            MatTableModule
+            MatTableModule,
+            
+           
           ],
   exports: [
             MatButtonModule,
@@ -38,7 +42,8 @@ import {MatTableModule} from '@angular/material/table';
             MatIconModule,
             MatToolbarModule,
             MatGridListModule,
-            MatTableModule
+            MatTableModule,
+    
           ],
 })
 export class AngularMaterialModule { }
