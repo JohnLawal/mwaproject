@@ -1,10 +1,15 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            View Package
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <h3>This feature is coming Soon</h3>
-    </mat-card-content>
-</mat-card>
+<mat-drawer-container class="example-container" class="fullScreen">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+        </button>
+    </mat-drawer>
+    
+    <div class="example-sidenav-content" class="fullScreen">
+        <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+        </button>
+    </div>
+</mat-drawer-container>

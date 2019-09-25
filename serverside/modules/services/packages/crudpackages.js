@@ -5,7 +5,6 @@ let handlers = {}
 handlers.viewPackagesHandler = function(req, res, next) {
     PackageSchema.find((err, documents) => {
         if (err) return next(Error(err));
-
         res.status(200).json(documents)
     })
 }
